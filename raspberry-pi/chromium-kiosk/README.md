@@ -1,0 +1,1 @@
+# Chromium browser in kiosk mode on start
