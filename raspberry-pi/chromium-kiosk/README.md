@@ -58,6 +58,8 @@ rm /etc/resolv.conf
 ln -s /tmp/dhcpcd.resolv.conf /etc/resolv.conf
 ```
 
+- Also disable swap and start the FS as read-only by adding `noswap ro` at the and of the line in `/boot/cmdline.txt`.
+
 ## Automatically start Chromium in kiosk mode
 - Edit the `/etc/xdg/lxsession/LXDE-pi/autostart` file to have the following:
 ```
