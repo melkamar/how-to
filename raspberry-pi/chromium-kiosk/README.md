@@ -92,19 +92,18 @@ network={
     phase2="auth=MSCHAPV2"
 }
 ```
-- Set up your network interfaces to automatically use this config file: `/etc/network/interfaces`
+- Set up your network interfaces to automatically use this config file: `/etc/network/interfaces`. If using wired connection, make sure to include the `wpa-driver` line!
 ```
 # ...
 iface eth0 inet manual
+    wpa-driver wired
     wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
 
 allow-hotplug wlan0
 iface wlan0 inet manual
     wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
 
-allow-hotplug wlan1
-iface wlan1 inet manual
-    wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+# ...
 ```
 
 ## Ease of use
