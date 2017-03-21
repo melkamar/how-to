@@ -46,10 +46,11 @@ tmpfs           /tmp              tmpfs   nodev,nosuid         0       0
 tmpfs           /var/lib/lightdm  tmpfs   nodev,nosuid         0       0
 tmpfs           /home/pi          tmpfs   nodev,nosuid         0       0
 ```
-  - Anything physically mounted from the SD card is read-only (`ro` flag).
-  - Temporary and log folders are writable, but mounted as tmpfs (i.e. in memory)
-  - Trial and error showed that `lightdm` insists on writing to its `/var/lib/lightdm` folder, so mount that as tmpfs. 
-  - `Xserver` needs to write to `~/.Xauthority`, Chromium might want to write something to home folder as well, so mount it as tmpfs.
+- Explanation:
+   - Anything physically mounted from the SD card is read-only (`ro` flag).
+   - Temporary and log folders are writable, but mounted as tmpfs (i.e. in memory)
+   - Trial and error showed that `lightdm` insists on writing to its `/var/lib/lightdm` folder, so mount that as tmpfs. 
+   - `Xserver` needs to write to `~/.Xauthority`, Chromium might want to write something to home folder as well, so mount it as tmpfs.
   
 - Using DHCP requires write access to `/etc/resolv.conf`, so make that a symlink from a writeble directory:
 ```
@@ -107,7 +108,7 @@ iface wlan1 inet manual
 ```
 
 ## Ease of use
-- Set up handy aliases to switch between read-only and writable fs, including a prompt help (see [[1]](#references)):
+- Set up handy aliases to switch between read-only and writable fs, including a prompt help (thanks [[1]](#references)):
 ```
 # set variable identifying the filesystem you work in (used in the prompt below)
 fs_mode=$(mount | sed -n -e "s/^.* on \/ .*(\(r[w|o]\).*/\1/p")
