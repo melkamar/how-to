@@ -120,4 +120,5 @@ alias rwboot='mount -o remount,rw /boot'
 ```
 # References 
 [1] Steps mostly adapted from [this blogpost](http://petr.io/en/blog/2015/11/09/read-only-raspberry-pi-with-jessie/).
+
 [2] http://alexba.in/blog/2013/01/07/use-your-raspberrypi-to-power-a-company-dashboard/
