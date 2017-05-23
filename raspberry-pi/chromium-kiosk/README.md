@@ -30,9 +30,9 @@ apt-get autoremove --purge
 
 - Install packages you will need:
 ```
-sudo apt-get install vim noclutter
+sudo apt-get install vim unclutter
 ```
-  - `noclutter` will hide mouse cursor to get it out of the way
+  - `unclutter` will hide mouse cursor to get it out of the way
 
 ## Making filesystem read-only
 - Edit `/etc/fstab` accordingly:
