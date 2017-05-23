@@ -62,14 +62,20 @@ ln -s /tmp/dhcpcd.resolv.conf /etc/resolv.conf
 - Also disable swap and start the FS as read-only by adding `noswap ro` at the and of the line in `/boot/cmdline.txt`.
 
 ## Automatically start Chromium in kiosk mode
+- Create a `/var/runchromium.sh` script, make it runnable - `chmod +x /var/runchromium.sh`. In my case I needed to wait a bit before the networking got initialized properly, that's why I needed a separate script.
+```
+#!/bin/sh
+sleep 5
+/usr/bin/chromium-browser --kiosk --disable-restore-session-state --no-first-run http://your-page.example
+```
+
 - Edit the `/etc/xdg/lxsession/LXDE-pi/autostart` file to have the following:
 ```
 @lxpanel --profile LXDE-pi
 @pcmanfm --desktop --profile LXDE-pi
-#@xscreensaver -no-splash  # Turn of screensaver
 @point-rpi
-@/usr/bin/chromium-browser --kiosk --disable-restore-session-state --no-first-run http://your-page.example
 @unclutter -idle 0.1 -root
+@sh /var/runchromium.sh
 ```
 
 ## Optional - set up WPA Supplicant for 802.1X network authentication
