@@ -126,6 +126,12 @@ export PS1='\[\033[01;32m\]\u@\h${fs_mode:+($fs_mode)}\[\033[00m\]:\[\033[01;34m
 alias roboot='mount -o remount,ro /boot'
 alias rwboot='mount -o remount,rw /boot'
 ```
+
+## Troubleshooting
+
+#### Cannot get past the user login form
+Chack that the `/home/pi` folder is writable (i.e. is not a part of the read-only filesystem - mount it to tmpfs)
+
 # References 
 [1] Steps mostly adapted from [this blogpost](http://petr.io/en/blog/2015/11/09/read-only-raspberry-pi-with-jessie/).
 
