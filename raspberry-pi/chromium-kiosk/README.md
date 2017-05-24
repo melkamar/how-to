@@ -127,6 +127,26 @@ alias roboot='mount -o remount,ro /boot'
 alias rwboot='mount -o remount,rw /boot'
 ```
 
+## Setting up `/home/pi` environment
+Because the home directory is mounted as a tmpfs, you cannot directly edit `.profile`, `.bashrc` etc. Solution? Save those files elsewhere and copy them on init:
+
+- Create "stand-in" home directory, for example in `/var/pi-user/home`
+```
+$ mkdir -p /var/pi-user-home/pi/
+$ touch /var/pi-user-home/.bashrc
+$ touch /var/pi-user-home/.profile
+$ chown -R pi:pi /var/pi-user-home/
+```
+
+- Copy the "temp home" directory to actual home directory on system startup
+```
+#/etc/rc.local
+
+# ...
+# Make sure that the pi folder has correct ownership (pi:pi)
+cp -a /var/pi-user-home/pi/ /home/
+```
+
 ## Troubleshooting
 
 #### Cannot get past the user login form
