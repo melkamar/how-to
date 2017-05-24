@@ -133,8 +133,8 @@ Because the home directory is mounted as a tmpfs, you cannot directly edit `.pro
 - Create "stand-in" home directory, for example in `/var/pi-user/home`
 ```
 $ mkdir -p /var/pi-user-home/pi/
-$ touch /var/pi-user-home/.bashrc
-$ touch /var/pi-user-home/.profile
+$ touch /var/pi-user-home/pi/.bashrc
+$ touch /var/pi-user-home/pi/.profile
 $ chown -R pi:pi /var/pi-user-home/
 ```
 
