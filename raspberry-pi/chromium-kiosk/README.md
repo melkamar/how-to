@@ -101,6 +101,7 @@ network={
 - Set up your network interfaces to automatically use this config file: `/etc/network/interfaces`. If using wired connection, make sure to include the `wpa-driver` line!
 ```
 # ...
+allow-hotplug eth0
 iface eth0 inet manual
     wpa-driver wired
     wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
@@ -151,6 +152,9 @@ cp -a /var/pi-user-home/pi/ /home/
 
 #### Cannot get past the user login form
 Chack that the `/home/pi` folder is writable (i.e. is not a part of the read-only filesystem - mount it to tmpfs)
+
+#### Network does not work after shutting down Pi and plugging back in
+Make sure that in the `wpa_supplicant.conf` file there is this line: `allow-hotplug eth0`.
 
 # References 
 [1] Steps mostly adapted from [this blogpost](http://petr.io/en/blog/2015/11/09/read-only-raspberry-pi-with-jessie/).
