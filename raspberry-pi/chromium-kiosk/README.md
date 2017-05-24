@@ -113,6 +113,8 @@ iface wlan0 inet manual
 # ...
 ```
 
+_Note: I was not able to get WiFi working with the authentication. I gave up :(_
+
 ## Ease of use
 - Set up handy aliases to switch between read-only and writable fs, including a prompt help (thanks [[1]](#references)):
 ```
